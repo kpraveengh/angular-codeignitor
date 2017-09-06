@@ -1,0 +1,66 @@
+          <div class="col-md-12 menu-products-list" >
+        
+			   <div class="category-box arrow_box"><h4>{{keyName}}</h4> </div>
+               <!-- item-1 -->			   
+          
+						
+						
+							  <div class="portlet light portlet-fit bordered fade-in ">
+							 
+							  <div class="portlet-body" >
+							   <div id="content-inside">
+                                <div class="portlet light " >
+                                        <div class="mt-element-card mt-element-overlay">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  ng-repeat="pro in pageProds | filter : searchterm"  ui-view class="fade-in-up">
+                                                    <div class="mt-card-item animated fadeInUp" >
+                                                        <div class="mt-card-avatar mt-overlay-1 mt-scroll-up">
+                                                            <img src="http://www.centrair.jp/resource/multi/images/p_dine_momi_220.jpg">
+                                                            <div class="mt-overlay">
+                                                                <div class="mt-info">
+                                                                   <p class="mt-card-item-desc">Our flavoursome dal makhani cooked in authentic spices and cream for a delicious side to accompany your dishes for a relish able complete meal.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-card-content">
+                                                            <h3 class="mt-card-name" ng-model="pro.ProdName">{{pro.ProdName}}</h3>
+                                                        </div>
+														<hr style="margin:10px 0;">
+														      <div class="mt-card-content">
+														<div class="row">
+                                                 	<div class="col-md-6 col-sm-6 col-xs-6">
+                                                           <span class="mt-card-price" ng-model="pro.Price1" >{{pro.Price1 | currency:"&#8360 "}}</span>
+															</div>
+															<div class="col-md-4 col-sm-6 col-xs-6">
+											<!-- 				  <div class="center" style="float:right">
+																 <div class="input-group" >
+																	<span class="input-group-btn">
+																	<button type="button" class="btn btn-success btn-xs cart-btn-number mybtn qtyminus" ng-click="decrement(pro, $index);"  ng-disabled="cartproduct.qty<=0"  >
+																	<span class="glyphicon glyphicon-minus"></span>
+																	</button>
+																	</span>
+																	<input type="text" name="quantity" class="form-control input-number-cart qty" value= "{{cartproduct.qty}}" min="0" max="100" ng-model="pro.qty">
+																	<span class="input-group-btn">
+																	<button type="button" class="btn btn-xs btn-success cart-btn-number mybtn" ng-click="increment(pro); addtocart(pro);" >
+																	<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																	</span>
+																 </div>
+															  </div> -->
+															 <button ng-if="product.options" type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#product_view"  ng-click="showModal(product.id)"> Add Cart</button>
+																<button ng-if="!product.options" type="button"  id="addtocart" class="btn btn-sm btn-success"  ng-click="addtocart(pro);" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><i ng-show="loading"><i class="fa fa-spinner fa-spin"></i></i>{{addcart}}</button>
+																	
+															</div>
+															</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+								</div>
+								</div>
+								</div>
+							  
+			   <!-- Nested array end-->
+            </div>

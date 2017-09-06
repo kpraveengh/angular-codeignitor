@@ -1,0 +1,16 @@
+
+
+
+   <div class="col-md-12 menu-shop-list">
+ 
+            <div class="menu-list-group" >
+                <ul class="menu-list-items">                
+                    <a href="#" ng-repeat="pagename in menu">
+                    
+                    <li  class="menu-list-group-item" ng-click="getdata(pagename.PageName,$index);" ng-class="{activePage: selected == $index}">{{pagename.Caption}}</li></a>                   
+                </ul>
+                </div>
+            </div>
+
+
+

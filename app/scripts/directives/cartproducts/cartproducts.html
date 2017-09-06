@@ -1,0 +1,75 @@
+      <div class="col-md-12 cart-info" >
+               <div class="row">
+                  
+             <div class="cart-list-group" >
+                     <div class="cart-list-header" >
+                     <div class="row">
+                     <div class="col-xs-8">
+                    Your Cart Items 
+                        </div>
+                         <div class="col-xs-4">
+                        <a  ng-if="cartproducts != ''" ng-click="clearCart()">Clear all </a>						
+                        </div>
+                        </div>						
+                     </div>
+					 <div ng-repeat="cartproduct in cartproducts track by $index" ng-mouseover="first=true"   ng-mouseleave="first=false">
+                     <div class="row cart-item-list" >
+                        <div class="addin-cart animated fadeInLeft">
+						  <hr>
+                           <div class="col-md-6 col-xs-6 " >
+                              <p class="cart-item-title">{{cartproduct.ProdName}}, {{cartproduct.option}}</p>
+                           </div>
+                           <div class="col-md-3 col-xs-3">
+                              <div class="center" style="float:right">
+                                 <div class="input-group">
+                                    <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-xs cart-btn-number mybtn qtyminus" ng-click="decrement(cartproduct, $index);"  ng-disabled="cartproduct.qty<=0"  ng-show="first" ng-style="style">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                    </span>
+                                    <input type="text" name="quantity" class="form-control input-number-cart qty" value="{{cartproduct.qty}}" min="0" max="100" ng-model="cartproduct.qty">
+                                    <span class="input-group-btn">
+                                    <button type="button" class="btn btn-xs btn-success cart-btn-number mybtn" ng-click="increment(cartproduct)" ng-show="first">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                    </span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-xs-3">
+                              <div class="center">
+                                 <div ng-hide="first" class="input-group cart-item-title">
+                                    {{cartproduct.qty * cartproduct.Price1 | currency}} 
+                                 </div>
+                              </div>
+							  <i ng-show="loading"><i class="fa fa-spinner fa-spin"></i></i>
+                              <span ng-show="first" ng-click="removeItem($index)" style="cursor:pointer;" class="w3-right w3-margin-right"><i class="fa fa-trash"></i></span> 
+                           </div>
+                        </div>
+                     </div>
+					 </div>
+                  </div>
+               </div>
+               <div class="row" >
+                  <div class="total-cart-list-group animated slideInUp">
+                     <div class="row" ng-hide="cartproducts.length <=0 ">
+                        <h3 >TOTAL</h3>
+                        <p>Total Items: {{cartproducts.length}}</p>
+                     </div>
+                     <div class="row">
+                        <div ng-hide="cartproducts.length <=0 " class="col-md-12 col-xs-12">
+                           <H2>{{total() | currency:"&#8360 "}}</H2>
+                           <p>Shipping Charges: &#8360 20</p>
+                        </div>
+						<div ng-show="cartproducts.length <=0 " class="col-md-12 col-xs-12 center" >
+						<img src="{{settings.globalPath}}/img/cart.png" class="img-responsive cart-empty-logo" style="margin: 0 auto;" >
+                           <p>No Items in your Cart</p>
+                        </div>
+                        <a ng-if="sessionuser !== null" ng-hide="cartproducts.length <=0 " class="btn btn-md btn-success" href="#/restaurant/{{org_name}}/order"> Checkout</a>
+						<a ng-if="sessionuser === null" ng-hide="cartproducts.length <=0 " data-toggle="modal" data-target="#login-modal" class="btn btn-md btn-success"> Checkout</a>
+						
+						
+                     </div>
+                  </div>
+               </div>
+            </div>
